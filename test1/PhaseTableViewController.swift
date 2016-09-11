@@ -13,5 +13,26 @@ class PhaseTableViewController: UITableViewController {
     @IBOutlet weak var boton: UIButton!
     @IBAction func switchDidChange(sender: AnyObject) {
         boton.enabled = !switches.contains { s in s.on == false }
+        project.phases[phaseIndex].tasks = switches.map { $0.on }
+    }
+    var project: Project!
+    var phaseIndex: Int = 0
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let tasks = project.phases[phaseIndex].tasks
+        guard tasks.count > 0 else { return }
+        zip(switches, tasks).forEach { s, task in
+            s.on = task
+        }
+        boton.enabled = !switches.contains { s in s.on == false }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "nextStep" {
+            if let nextPhase = segue.destinationViewController as? PhaseTableViewController {
+                nextPhase.project = project
+                nextPhase.phaseIndex = phaseIndex + 1
+            }
+        }
     }
 }

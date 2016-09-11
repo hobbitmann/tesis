@@ -44,7 +44,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Arm-wq-HPj" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Arm-wq-HPj" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD" customClass="ProjectCell" customModule="test1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
@@ -72,7 +72,7 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8">
+                    <navigationItem key="navigationItem" title="Proyectos" id="Zdf-7t-Un8">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Zx5-At-Ov4">
                             <connections>
                                 <segue destination="fzT-Xh-WDa" kind="presentation" identifier="newProject" id="ZEq-hU-5C3"/>
@@ -114,7 +114,7 @@
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ke2-Dk-gLo">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ke2-Dk-gLo">
                                                             <rect key="frame" x="80" y="0.0" width="504" height="27"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -149,7 +149,7 @@
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Eno-mU-pZe">
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Eno-mU-pZe">
                                                             <rect key="frame" x="80" y="0.0" width="504" height="159"/>
                                                             <date key="date" timeIntervalSinceReferenceDate="495303840.49271601">
                                                                 <!--2016-09-11 16:24:00 +0000-->
@@ -421,7 +421,7 @@
                                                     <rect key="frame" x="255" y="7" width="90" height="30"/>
                                                     <state key="normal" title="End of Phase"/>
                                                     <connections>
-                                                        <segue destination="zIr-Wc-UZH" kind="show" id="4jt-nV-OS6"/>
+                                                        <segue destination="zIr-Wc-UZH" kind="show" identifier="nextStep" id="4jt-nV-OS6"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -588,7 +588,7 @@
                                                     <rect key="frame" x="255" y="7" width="90" height="30"/>
                                                     <state key="normal" title="End of Phase"/>
                                                     <connections>
-                                                        <segue destination="nLy-gP-dph" kind="show" id="jKX-XB-1GX"/>
+                                                        <segue destination="nLy-gP-dph" kind="show" identifier="nextStep" id="jKX-XB-1GX"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -629,7 +629,7 @@
                         <sections>
                             <tableViewSection headerTitle="" id="PUa-ti-FVa">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="zeZ-bY-Y4N">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="zeZ-bY-Y4N" customClass="ProjectCell" customModule="test1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="64" width="600" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zeZ-bY-Y4N" id="Qm7-Ti-tIZ">
@@ -927,6 +927,10 @@
                         <outletCollection property="switches" destination="ZP7-iZ-5c8" collectionClass="NSMutableArray" id="5xk-uW-Qpu"/>
                         <outletCollection property="switches" destination="OIs-NW-TiA" collectionClass="NSMutableArray" id="n5O-Ap-Zzk"/>
                         <outletCollection property="switches" destination="Hif-gU-Hgo" collectionClass="NSMutableArray" id="hC2-HH-gq3"/>
+                        <outletCollection property="switches" destination="to9-jU-XgL" collectionClass="NSMutableArray" id="ec0-2P-6fA"/>
+                        <outletCollection property="switches" destination="bbt-l3-P9n" collectionClass="NSMutableArray" id="JoN-Uc-8aN"/>
+                        <outletCollection property="switches" destination="wIW-0r-AA7" collectionClass="NSMutableArray" id="Zl3-UE-Z1t"/>
+                        <outletCollection property="switches" destination="V7L-KE-vmr" collectionClass="NSMutableArray" id="f4v-BD-Ndt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gn0-zT-OB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -936,7 +940,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Olu-D7-Tk3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kTc-Mg-Xqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fzT-Xh-WDa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NqV-KU-cS4">
@@ -948,6 +951,7 @@
                         <segue destination="gJT-vA-dJS" kind="relationship" relationship="rootViewController" id="Zvu-fi-gNi"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kTc-Mg-Xqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1596" y="-630"/>
         </scene>

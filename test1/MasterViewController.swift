@@ -2,7 +2,7 @@
 //  MasterViewController.swift
 //  test1
 //
-//  Created by Cristián Arenas Ulloa on 9/11/16.
+//  Created byarstar Cristián Arenas Ulloa on 9/11/16.
 //  Copyright © 2016 gianni. All rights reserved.
 //
 
@@ -11,11 +11,26 @@ import UIKit
 struct Phase {
     var tasks: [Bool]
 }
-struct Project {
+class Project {
     var name: String
     var startDate: NSDate
     var endDate: NSDate
     var phases: [Phase]
+    
+    init(name: String, startDate: NSDate, endDate: NSDate) {
+        self.name = name
+        self.startDate = startDate
+        self.endDate = endDate
+        phases = [
+            Phase(tasks: []),
+            Phase(tasks: []),
+            Phase(tasks: []),
+        ]
+    }
+}
+
+class ProjectCell: UITableViewCell {
+    var project: Project!
 }
 
 class MasterViewController: UITableViewController {
@@ -55,13 +70,12 @@ class MasterViewController: UITableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
-//            if let indexPath = self.tableView.indexPathForSelectedRow {
-//                let object = objects[indexPath.row] as! NSDate
-//                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-//                controller.detailItem = object
-//                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-//                controller.navigationItem.leftItemsSupplementBackButton = true
-//            }
+            if let nc = segue.destinationViewController as? UINavigationController,
+               let phase = nc.viewControllers.first as? PhaseTableViewController,
+               let cell = sender as? ProjectCell
+            {
+                phase.project = cell.project
+            }
         }
         if segue.identifier == "newProject" {
             if let nc = segue.destinationViewController as? UINavigationController,
@@ -83,10 +97,13 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        guard let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as? ProjectCell else {
+            fatalError("ups")
+        }
 
         let object = objects[indexPath.row]
         cell.textLabel!.text = object.name
+        cell.project = object
         return cell
     }
 

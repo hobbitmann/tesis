@@ -23,8 +23,7 @@ class NewProjectTableViewController: UITableViewController {
         let p = Project(
             name: name.text ?? "",
             startDate: startDate.date,
-            endDate: endDate.date,
-            phases: []
+            endDate: endDate.date
         )
         callback(p)
         dismissViewControllerAnimated(true, completion: nil)
