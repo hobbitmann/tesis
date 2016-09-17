@@ -16,16 +16,16 @@ class NewProjectTableViewController: UITableViewController {
     @IBOutlet weak var endDate: UIDatePicker!
     
     
-    @IBAction func cancel(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancel(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
-    @IBAction func done(sender: AnyObject) {
+    @IBAction func done(_ sender: AnyObject) {
         let p = Project(
             name: name.text ?? "",
             startDate: startDate.date,
             endDate: endDate.date
         )
         callback(p)
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
