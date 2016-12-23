@@ -8,12 +8,13 @@
 
 import UIKit
 import Alamofire
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -30,17 +31,21 @@ class LoginViewController: UIViewController {
             "nombre"  : username.text ?? "",
             "password": password.text ?? ""
         ]
+        SVProgressHUD.show()
         Alamofire.request("http://pt202.dreamhosters.com/api/login.php", method: .post, parameters: parameters)
             .validate()
             .responseString { [unowned self] response in
                 switch response.result {
                 case .success(let value):
-                    print("login correcto: \(value)")
                     if value=="OK" {
+                        SVProgressHUD.showSuccess(withStatus: "Bienvenido")
                         self.performSegue(withIdentifier: "didLogin", sender: sender)
+                    } else {
+                        SVProgressHUD.showError(withStatus: "Credenciales inválidas")
                     }
                 case .failure(let error):
-                    print("login fallido: \(error)")
+                    print(error)
+                    SVProgressHUD.showError(withStatus: "Error\nrevise su conexión")
                 }
         }
     }
