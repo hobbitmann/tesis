@@ -1,14 +1,12 @@
 PODS:
-  - Realm (0.103.1):
-    - Realm/Headers (= 0.103.1)
-  - Realm/Headers (0.103.1)
+  - Alamofire (4.2.0)
 
 DEPENDENCIES:
-  - Realm
+  - Alamofire (~> 4.0)
 
 SPEC CHECKSUMS:
-  Realm: 9ed57109332e95bdc48a7caedff80b70c51d5ef4
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
 
-PODFILE CHECKSUM: 7eb100a42aaf350945720bed8ac6e966527e5d22
+PODFILE CHECKSUM: 29e13216366cd291984cf8b400cdc469d594c657
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1
