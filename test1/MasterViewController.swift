@@ -53,7 +53,6 @@ class MasterViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
         super.viewWillAppear(animated)
     }
 
@@ -72,8 +71,7 @@ class MasterViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
-            if let nc = segue.destination as? UINavigationController,
-               let phase = nc.viewControllers.first as? PhaseTableViewController,
+            if let phase = segue.destination as? PhaseTableViewController,
                let cell = sender as? ProjectCell
             {
                 phase.project = cell.project
