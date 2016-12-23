@@ -8,4 +8,5 @@ use_frameworks!
 target 'test1'do
   # pod 'Realm'
   pod 'Alamofire', '~> 4.0'
+  pod 'SVProgressHUD', '~> 2.1'
 end
