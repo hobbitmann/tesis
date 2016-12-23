@@ -63,7 +63,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Billung Online" id="ePa-iD-QE1">
-                        <barButtonItem key="rightBarButtonItem" title="Login" id="v8h-91-a0N">
+                        <barButtonItem key="backBarButtonItem" title="login" id="MAh-zV-1XU"/>
+                        <barButtonItem key="rightBarButtonItem" title="login" style="done" id="v8h-91-a0N">
                             <connections>
                                 <action selector="didPressLogin:" destination="Top-B6-wsf" id="cyf-7v-PzF"/>
                             </connections>
