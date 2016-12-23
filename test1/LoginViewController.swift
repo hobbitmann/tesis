@@ -32,16 +32,25 @@ class LoginViewController: UIViewController {
             "password": password.text ?? ""
         ]
         SVProgressHUD.show()
-        Alamofire.request("http://pt202.dreamhosters.com/api/login.php", method: .post, parameters: parameters)
+        Alamofire.request("http://pt202.dreamhosters.com/api/controllers/login.php", method: .post, parameters: parameters)
             .validate()
-            .responseString { [unowned self] response in
+            .responseJSON { [unowned self] response in
                 switch response.result {
                 case .success(let value):
-                    if value=="OK" {
-                        SVProgressHUD.showSuccess(withStatus: "Bienvenido")
+                    guard
+                    let respuesta = value as? Parameters,
+                    let status = respuesta["status"] as? String,
+                    let data = respuesta["data"] as? [Parameters]
+                        else {
+                            SVProgressHUD.showError(withStatus: "Error del servidor\nintente más tarde")
+                            return
+                    }
+                    
+                    if status == "OK" {
+                        SVProgressHUD.showSuccess(withStatus: "Bienvenido usuario #\(data[0]["id"]!)")
                         self.performSegue(withIdentifier: "didLogin", sender: sender)
                     } else {
-                        SVProgressHUD.showError(withStatus: "Credenciales inválidas")
+                        SVProgressHUD.showError(withStatus: "Error\n\(respuesta["debug"]!)")
                     }
                 case .failure(let error):
                     print(error)
