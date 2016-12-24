@@ -35,26 +35,17 @@ class LoginViewController: UIViewController {
         Alamofire.request("http://pt202.dreamhosters.com/api/controllers/login.php", method: .post, parameters: parameters)
             .validate()
             .responseJSON { [unowned self] response in
-                switch response.result {
-                case .success(let value):
-                    guard
-                    let respuesta = value as? Parameters,
-                    let status = respuesta["status"] as? String,
-                    let data = respuesta["data"] as? [Parameters]
-                        else {
-                            SVProgressHUD.showError(withStatus: "Error del servidor\nintente más tarde")
-                            return
-                    }
-                    
-                    if status == "OK" {
-                        SVProgressHUD.showSuccess(withStatus: "Bienvenido usuario #\(data[0]["id"]!)")
-                        self.performSegue(withIdentifier: "didLogin", sender: sender)
-                    } else {
-                        SVProgressHUD.showError(withStatus: "Error\n\(respuesta["debug"]!)")
-                    }
+                switch ServerResponse(result: response.result) {
+                case .success(let data):
+                    SVProgressHUD.showSuccess(withStatus: "Bienvenido usuario #\(data[0]["id"]!)")
+                    self.performSegue(withIdentifier: "didLogin", sender: sender)
                 case .failure(let error):
-                    print(error)
+                    SVProgressHUD.showError(withStatus: "Error\n\(error)")
+                case .networkError(let debugInfo):
+                    print(debugInfo)
                     SVProgressHUD.showError(withStatus: "Error\nrevise su conexión")
+                case .serverError:
+                    SVProgressHUD.showError(withStatus: "Error del servidor\nintente más tarde")
                 }
         }
     }
@@ -69,4 +60,39 @@ class LoginViewController: UIViewController {
     }
     */
 
+}
+
+enum ServerResponse {
+    case success(data: [Parameters])
+    case failure(error: String)
+    case networkError(debugInfo: Error)
+    case serverError
+    
+    init(result: Result<Any>) {
+        switch result {
+        case .success(let value):
+            guard
+                let respuesta = value as? Parameters,
+                let status = respuesta["status"] as? String,
+                let data = respuesta["data"] as? [Parameters],
+                let error = respuesta["error"] as? String
+                else {
+                    self = .serverError
+                    return
+            }
+            switch status {
+            case "success":
+                self = .success(data: data)
+                return
+            case "failure":
+                self = .failure(error: error)
+                return
+            default:
+                self = .serverError
+                return
+            }
+        case .failure(let error):
+            self = .networkError(debugInfo: error)
+        }
+    }
 }
