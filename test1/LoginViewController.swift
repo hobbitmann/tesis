@@ -35,9 +35,13 @@ class LoginViewController: UIViewController {
         Alamofire.request("http://pt202.dreamhosters.com/api/controllers/login.php", method: .post, parameters: parameters)
             .validate()
             .responseJSON { [unowned self] response in
-                switch ServerResponse(result: response.result) {
+                let serverResponse = ServerResponse(result: response.result) { (json)->String in
+                    guard let id = json["id"] as? String else { throw MappingError() }
+                    return id
+                }
+                switch serverResponse {
                 case .success(let data):
-                    SVProgressHUD.showSuccess(withStatus: "Bienvenido usuario #\(data[0]["id"]!)")
+                    SVProgressHUD.showSuccess(withStatus: "Bienvenido usuario #\(data.first!)")
                     self.performSegue(withIdentifier: "didLogin", sender: sender)
                 case .failure(let error):
                     SVProgressHUD.showError(withStatus: "Error\n\(error)")
@@ -45,6 +49,8 @@ class LoginViewController: UIViewController {
                     print(debugInfo)
                     SVProgressHUD.showError(withStatus: "Error\nrevise su conexión")
                 case .serverError:
+                    fallthrough
+                case .dataError:
                     SVProgressHUD.showError(withStatus: "Error del servidor\nintente más tarde")
                 }
         }
@@ -62,13 +68,15 @@ class LoginViewController: UIViewController {
 
 }
 
-enum ServerResponse {
-    case success(data: [Parameters])
+struct MappingError: Error {}
+enum ServerResponse<T> {
+    case success(data: [T])
     case failure(error: String)
     case networkError(debugInfo: Error)
     case serverError
+    case dataError
     
-    init(result: Result<Any>) {
+    init(result: Result<Any>, mapper: (Parameters) throws -> T) {
         switch result {
         case .success(let value):
             guard
@@ -82,7 +90,11 @@ enum ServerResponse {
             }
             switch status {
             case "success":
-                self = .success(data: data)
+                do {
+                    self = .success(data: try data.map(mapper))
+                } catch {
+                    self = .dataError
+                }
                 return
             case "failure":
                 self = .failure(error: error)
