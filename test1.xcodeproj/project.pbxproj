@@ -135,7 +135,9 @@
 				TargetAttributes = {
 					7356850E1D85AD10007A48A6 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 2MK5MJ724C;
 						LastSwiftMigration = 0820;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -347,10 +349,14 @@
 			baseConfigurationReference = 8E0C13088BD48945F7DFE591 /* Pods-test1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 2MK5MJ724C;
 				INFOPLIST_FILE = test1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cl.gianni.test1;
+				PRODUCT_BUNDLE_IDENTIFIER = test.borrar2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1be5632c-8304-44c0-b9c2-6a32f60212ff";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore test.borrar2";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -360,10 +366,14 @@
 			baseConfigurationReference = 618087E089AA891D8B7346B7 /* Pods-test1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 2MK5MJ724C;
 				INFOPLIST_FILE = test1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cl.gianni.test1;
+				PRODUCT_BUNDLE_IDENTIFIER = test.borrar2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1be5632c-8304-44c0-b9c2-6a32f60212ff";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore test.borrar2";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
