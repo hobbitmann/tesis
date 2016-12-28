@@ -7,11 +7,29 @@
 //
 
 import UIKit
+import SVProgressHUD
+import Alamofire
 
 struct User {
     var username: String
     var password: String
     var id: String
+}
+
+extension User {
+    init(json: Parameters) throws {
+        guard
+            let username = json["username"] as? String,
+            let password = json["password"] as? String,
+            let id = json["id"] as? String
+            else {
+                throw MappingError()
+        }
+        
+        self.username = username
+        self.password = password
+        self.id = id
+    }
 }
 
 class UserCell: UITableViewCell {
@@ -33,7 +51,38 @@ class UsersViewController: UITableViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.rightBarButtonItems?.append(self.editButtonItem)
+//        self.navigationItem.rightBarButtonItems?.append(self.editButtonItem)
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        refreshControl?.beginRefreshing()
+        loadData()
+    }
+    
+    @objc func didPullToRefresh(sender: Any) {
+        loadData()
+    }
+    
+    func loadData() {
+        Alamofire.request("http://pt202.dreamhosters.com/api/controllers/users.php")
+            .validate()
+            .responseJSON { [unowned self] response in
+                let serverResponse = ServerResponse(result: response.result, mapper: User.init)
+                switch serverResponse {
+                case .success(let data):
+                    self.objects = data
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    SVProgressHUD.showError(withStatus: "Error\n\(error)")
+                case .networkError(let debugInfo):
+                    print(debugInfo)
+                    SVProgressHUD.showError(withStatus: "Error\nrevise su conexión")
+                case .serverError:
+                    fallthrough
+                case .dataError:
+                    SVProgressHUD.showError(withStatus: "Error del servidor\nintente más tarde")
+                }
+                self.refreshControl?.endRefreshing()
+        }
     }
     
     func insertNewObject(_ user: User) {
@@ -45,13 +94,6 @@ class UsersViewController: UITableViewController {
     // MARK: - Segues
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showDetail" {
-//            if let phase = segue.destination as? PhaseTableViewController,
-//                let cell = sender as? ProjectCell
-//            {
-//                phase.project = cell.project
-//            }
-//        }
         if segue.identifier == "newUser" {
             if let nc = segue.destination as? UINavigationController,
                 let new = nc.viewControllers.first as? NewUserTableViewController
@@ -88,13 +130,42 @@ class UsersViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: (indexPath as NSIndexPath).row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            deleteUser(at: indexPath)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
     
-    
+    func deleteUser(at indexPath: IndexPath) {
+        let parameters: Parameters = [
+            "id": objects[indexPath.row].id
+        ]
+        SVProgressHUD.show()
+        Alamofire.request("http://pt202.dreamhosters.com/api/controllers/users.php", method: .delete, parameters: parameters)
+            .validate()
+            .responseJSON { [unowned self] response in
+                let serverResponse = ServerResponse(result: response.result) { (json)->String in
+                    guard let mensaje = json["mensaje"] as? String else { throw MappingError() }
+                    return mensaje
+                }
+                switch serverResponse {
+                case .success(let data):
+                    print(data)
+                    SVProgressHUD.showSuccess(withStatus: "Usuario borrado")
+                    self.objects.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                case .failure(let error):
+                    SVProgressHUD.showError(withStatus: "Error\n\(error)")
+                case .networkError(let debugInfo):
+                    print(debugInfo)
+                    SVProgressHUD.showError(withStatus: "Error\nrevise su conexión")
+                case .serverError:
+                    fallthrough
+                case .dataError:
+                    SVProgressHUD.showError(withStatus: "Error del servidor\nintente más tarde")
+                }
+        }
+
+    }
 }
 
