@@ -131,6 +131,15 @@ class UsersViewController: UITableViewController {
         self.tableView.insertRows(at: [indexPath], with: .automatic)
     }
     
+    // esta función permite editar un usuario existente en nuestro arrglo y actualiza la vista para que aparezca
+    func updateUser(_ user: User) {
+        if let oldUserIndex = self.objects.index(where: { $0.id == user.id }) {
+            self.objects[oldUserIndex] = user
+            let indexPath = IndexPath(row: oldUserIndex, section: 0)
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
     // MARK: - Segues
     
     // esto sucede cuando vamos a hacer una transición a otra vista
@@ -144,6 +153,33 @@ class UsersViewController: UITableViewController {
                 // y le pasamos como parámetro la función para insertar usuarios
                 // así la pantalla de crear nuevo usuario puede insertarlo en esta pantalla
                 new.callback = insertNewObject
+            }
+        }
+        // si es que la transición se llama "editUser"
+        if segue.identifier == "editUser" {
+            // intentamos obtener la siguiente vista
+            if let nc = segue.destination as? UINavigationController,
+                let new = nc.viewControllers.first as? NewUserTableViewController,
+                let cell = sender as? UserCell
+            {
+                // y le pasamos como parámetro la función para editar usuarios
+                // así la pantalla de crear nuevo usuario puede editarlo en esta pantalla
+                new.callback = updateUser
+                
+                // le cambiamos el título para que diga que
+                new.title = "Editar Usuario"
+                
+                // y también le pasamos una función para configurar cosas cuando la vista esté cargada
+                new.onViewDidLoad = {
+                    // y además rellenamos la pantalla con los datos que ya tenemos
+                    new.username.text = cell.user.username
+                    new.password.text = cell.user.password
+                    new.id.text = cell.user.id
+                    
+                    // y desabilitamos el id para que no se pueda modificar (y lo ponemos gris pa que se entienda)
+                    new.id.isEnabled = false
+                    new.id.textColor = UIColor.gray
+                }
             }
         }
     }
