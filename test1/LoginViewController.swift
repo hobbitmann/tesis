@@ -2,7 +2,7 @@
 //  LoginViewController.swift
 //  test1
 //
-//  Created by Cristián Arenas Ulloa on 12/22/16.
+//  Created by Gianni Rondalli Arenas on 12/22/16.
 //  Copyright © 2016 gianni. All rights reserved.
 //
 

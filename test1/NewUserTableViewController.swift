@@ -2,7 +2,7 @@
 //  NewUserTableViewController.swift
 //  test1
 //
-//  Created by Cristián Arenas Ulloa on 12/27/16.
+//  Created by Gianni Rondalli Arenas on 12/27/16.
 //  Copyright © 2016 gianni. All rights reserved.
 //
 
