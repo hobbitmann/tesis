@@ -15,6 +15,9 @@ class NewUserTableViewController: UITableViewController {
     // En esta variable podemos meter una función externa, para que cuando se cree un usuario se entregue por esta vía
     var callback: (User)->Void = { _ in }
     
+    // En esta variable también podemos meter una función externa, para que cuando la vista se cargue, alguien externo pueda configurar cosas
+    var onViewDidLoad: ()->Void = { }
+    
     // Estas variables son "conexiones" (outlets) a objetos dibujados en la pantalla con el "Constructor de Interfaces" o "Interface Builder", de ahí viene la "IB" que sale en @IBOutlet
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -24,6 +27,13 @@ class NewUserTableViewController: UITableViewController {
     @IBAction func cancel(_ sender: AnyObject) {
         // si se apreta cancelar, descartamos (dismiss) la pantalla de creación de usuarios nuevos
         dismiss(animated: true, completion: nil)
+    }
+    
+    // esta función se llama cuando se carga la vista
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // y llamamos a nuestra función onViewDidLoad, por si el que nos está mostrando quiere hacer algo con nosotros
+        onViewDidLoad()
     }
     
     // Otra función conectada a un botón, este es el botón "listo" (done)
