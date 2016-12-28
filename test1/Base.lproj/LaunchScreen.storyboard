@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dmc-Cf-E0j">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AEi-dl-Agd">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -28,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="1144.8" y="273.01349325337333"/>
         </scene>
-        <!--View Controller-->
+        <!--Billund Online-->
         <scene sceneID="YPb-DS-Fod">
             <objects>
                 <viewController id="qc4-8S-5tT" sceneMemberID="viewController">
@@ -42,32 +42,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="bookmarks" id="L7i-pd-Dqq"/>
-                    <navigationItem key="navigationItem" id="zip-bm-hfp"/>
+                    <navigationItem key="navigationItem" title="Billund Online" id="zip-bm-hfp"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9qI-Dr-IU3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2074" y="273"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="GhT-2X-nTi">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Dmc-Cf-E0j" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="qD8-eI-1KM">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="AEi-dl-Agd" kind="relationship" relationship="viewControllers" id="Lso-ar-GMK"/>
-                        <segue destination="qc4-8S-5tT" kind="relationship" relationship="viewControllers" id="85n-zR-EPO"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yCx-u0-UE2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="205.59999999999999" y="273.01349325337333"/>
-        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="V7S-kW-7GB"/>
-    </inferredMetricsTieBreakers>
 </document>
