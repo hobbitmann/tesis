@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Billung Online-->
+        <!--Billund Online-->
         <scene sceneID="boH-Yk-dSc">
             <objects>
                 <viewController id="Top-B6-wsf" customClass="LoginViewController" customModule="test1" customModuleProvider="target" sceneMemberID="viewController">
@@ -62,7 +62,7 @@
                             <constraint firstItem="aiG-Gu-Le7" firstAttribute="trailing" secondItem="JZo-cr-4LN" secondAttribute="trailing" id="tQi-JF-cat"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Billung Online" id="ePa-iD-QE1">
+                    <navigationItem key="navigationItem" title="Billund Online" id="ePa-iD-QE1">
                         <barButtonItem key="backBarButtonItem" title="login" id="MAh-zV-1XU"/>
                         <barButtonItem key="rightBarButtonItem" title="login" style="done" id="v8h-91-a0N">
                             <connections>
@@ -84,7 +84,7 @@
         <scene sceneID="pY4-Hu-kfo">
             <objects>
                 <navigationController title="Master" id="RMx-3f-FxP" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pmd-2v-anx">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="Pmd-2v-anx">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -904,7 +904,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fzT-Xh-WDa" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NqV-KU-cS4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NqV-KU-cS4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -923,7 +923,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nWc-lj-kdf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="bookmarks" id="dy0-xE-hEo"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dQM-Cp-w6K">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dQM-Cp-w6K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -942,12 +942,14 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="cO9-Fi-YMs" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="z9j-bg-GFc">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="fma-wx-TRl" kind="relationship" relationship="viewControllers" id="bxN-bW-45x"/>
                         <segue destination="nWc-lj-kdf" kind="relationship" relationship="viewControllers" id="Fyl-YD-DxC"/>
+                        <segue destination="lve-jP-XtT" kind="relationship" relationship="viewControllers" id="Fwl-SR-6JA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GVk-9z-kdL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -987,6 +989,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <segue destination="eZE-5H-PrI" kind="presentation" identifier="editUser" id="9AR-48-mqX"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -1006,6 +1011,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vUg-iH-cYJ" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2825" y="-1473"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4VU-Ni-a6M">
+            <objects>
+                <navigationController id="lve-jP-XtT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" systemItem="more" id="f6q-Ri-fW0"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hlr-1j-N8W">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="NHj-FY-B3u" kind="relationship" relationship="rootViewController" id="dQF-DF-lfR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vlB-FV-Qi7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1886" y="-630"/>
+        </scene>
+        <!--Acerca de Billund-->
+        <scene sceneID="lPI-A9-LA9">
+            <objects>
+                <viewController id="NHj-FY-B3u" customClass="AboutViewController" customModule="test1" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kzQ-UY-97V"/>
+                        <viewControllerLayoutGuide type="bottom" id="V4i-1Z-Iyg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y3V-MA-tJf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMV-Ia-a5t">
+                                <rect key="frame" x="16" y="84" width="343" height="101.5"/>
+                                <string key="text">Esta aplicación es una extensión del sistema de gestión de proyectos con el fin de facilitarle al usuario o cliente como gestionar los proyectos de una forma más sencilla y ordenada.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0c-xL-cSx">
+                                <rect key="frame" x="166" y="195.5" width="44" height="30"/>
+                                <state key="normal" title="logout"/>
+                                <connections>
+                                    <action selector="didPressLogout:" destination="NHj-FY-B3u" eventType="touchUpInside" id="8MZ-jG-aO3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="S0c-xL-cSx" firstAttribute="centerX" secondItem="vMV-Ia-a5t" secondAttribute="centerX" id="9vw-hA-EK3"/>
+                            <constraint firstItem="vMV-Ia-a5t" firstAttribute="top" secondItem="kzQ-UY-97V" secondAttribute="bottom" constant="20" id="ICt-aI-3I1"/>
+                            <constraint firstItem="S0c-xL-cSx" firstAttribute="top" secondItem="vMV-Ia-a5t" secondAttribute="bottom" constant="10" id="Ke6-QI-1zl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vMV-Ia-a5t" secondAttribute="trailing" id="f7C-3x-wOp"/>
+                            <constraint firstItem="vMV-Ia-a5t" firstAttribute="leading" secondItem="y3V-MA-tJf" secondAttribute="leadingMargin" id="nmR-GY-FqV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Acerca de Billund" id="Mts-8H-GAM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o5f-LA-wtK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2824.8000000000002" y="-630.13493253373315"/>
         </scene>
         <!--Nuevo Usuario-->
         <scene sceneID="NjH-u5-D7t">
@@ -1158,7 +1222,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eZE-5H-PrI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ejx-l2-WA4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ejx-l2-WA4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1177,7 +1241,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fma-wx-TRl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="V9Z-0x-BxG"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="K5N-9C-ZGA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="K5N-9C-ZGA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1191,4 +1255,7 @@
             <point key="canvasLocation" x="1886" y="-1473"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="9AR-48-mqX"/>
+    </inferredMetricsTieBreakers>
 </document>
