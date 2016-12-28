@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
     
-    $sql = "INSERT INTO login (id, username, password) VALUES('$id', '$username', '$password')";
+    $sql = "INSERT INTO login (id, username, password) VALUES('$id', '$username', '$password') ON DUPLICATE KEY UPDATE username='$username', password='$password'";
     $respuesta = $db->query($sql);
     if($respuesta) {
         printJson(success([['mensaje'=>'funciono']]));
