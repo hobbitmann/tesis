@@ -34,22 +34,13 @@ class ProjectCell: UITableViewCell {
 }
 
 class ProjectsViewController: UITableViewController {
-
-    var detailViewController: DetailViewController? = nil
     var objects = [Project]()
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.rightBarButtonItems?.append(self.editButtonItem)
-
-        if let split = self.splitViewController {
-            let controllers = split.viewControllers
-            self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

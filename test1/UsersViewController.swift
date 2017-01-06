@@ -51,9 +51,6 @@ class UserCell: UITableViewCell {
 
 // Esta es la clase que maneja la pantalla que muestra los usuarios
 class UsersViewController: UITableViewController {
-    //esto está demás, tengo que borrarlo:
-    var detailViewController: DetailViewController? = nil
-    
     // vamos a empezar con un arreglo de usuarios vacío
     var objects = [User]()
     
