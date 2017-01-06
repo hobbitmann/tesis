@@ -138,7 +138,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Proyectos" id="Zdf-7t-Un8">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Zx5-At-Ov4">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="add" id="Zx5-At-Ov4">
                             <connections>
                                 <segue destination="fzT-Xh-WDa" kind="presentation" identifier="newProject" id="ZEq-hU-5C3"/>
                             </connections>
