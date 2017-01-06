@@ -33,7 +33,7 @@ class ProjectCell: UITableViewCell {
     var project: Project!
 }
 
-class MasterViewController: UITableViewController {
+class ProjectsViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var objects = [Project]()
