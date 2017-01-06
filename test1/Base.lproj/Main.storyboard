@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="-1306" y="-630"/>
         </scene>
-        <!--Master-->
+        <!--Proyectos-->
         <scene sceneID="smW-Zh-WAh">
             <objects>
-                <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="ProjectsViewController" customModule="test1" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="ProjectsViewController" customModule="test1" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -948,8 +948,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="fma-wx-TRl" kind="relationship" relationship="viewControllers" id="bxN-bW-45x"/>
+                        <segue destination="nWc-lj-kdf" kind="relationship" relationship="viewControllers" id="P89-Ju-V3i"/>
                         <segue destination="lve-jP-XtT" kind="relationship" relationship="viewControllers" id="Fwl-SR-6JA"/>
-                        <segue destination="nWc-lj-kdf" kind="show" identifier="phases" id="L9I-Mp-jwr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GVk-9z-kdL" userLabel="First Responder" sceneMemberID="firstResponder"/>
