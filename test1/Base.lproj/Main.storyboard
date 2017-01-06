@@ -439,8 +439,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3BL-3x-oZv">
-                                                    <rect key="frame" x="255" y="7" width="90" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3BL-3x-oZv">
+                                                    <rect key="frame" x="142.5" y="7" width="90" height="30"/>
                                                     <state key="normal" title="End of Phase"/>
                                                     <connections>
                                                         <segue destination="zIr-Wc-UZH" kind="show" identifier="nextStep" id="4jt-nV-OS6"/>
@@ -588,8 +588,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAS-62-KBm">
-                                                    <rect key="frame" x="255" y="7" width="90" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAS-62-KBm">
+                                                    <rect key="frame" x="142.5" y="7" width="90" height="30"/>
                                                     <state key="normal" title="End of Phase"/>
                                                     <connections>
                                                         <segue destination="nLy-gP-dph" kind="show" identifier="nextStep" id="jKX-XB-1GX"/>
@@ -864,8 +864,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHR-fB-dol">
-                                                    <rect key="frame" x="255" y="7" width="90" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHR-fB-dol">
+                                                    <rect key="frame" x="142.5" y="7" width="90" height="30"/>
                                                     <state key="normal" title="End of Phase"/>
                                                 </button>
                                             </subviews>
@@ -949,6 +949,7 @@
                     <connections>
                         <segue destination="fma-wx-TRl" kind="relationship" relationship="viewControllers" id="bxN-bW-45x"/>
                         <segue destination="lve-jP-XtT" kind="relationship" relationship="viewControllers" id="Fwl-SR-6JA"/>
+                        <segue destination="nWc-lj-kdf" kind="show" identifier="phases" id="L9I-Mp-jwr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GVk-9z-kdL" userLabel="First Responder" sceneMemberID="firstResponder"/>
