@@ -77,7 +77,7 @@ class UsersViewController: UITableViewController {
     // esta es la función que obtiene los datos de internet
     func loadData() {
         // hacemos un request de tipo GET a users.php
-        Alamofire.request("http://pt202.dreamhosters.com/api/controllers/users.php")
+        Alamofire.request("\(baseURL)/users.php")
             // validamos que nos haya respondido con un código de OK (2xx)
             .validate()
             // y cuando obtengamos un json de vuelta, entramos acá:
@@ -233,7 +233,7 @@ class UsersViewController: UITableViewController {
         // muestra un spinner para que se vea que está "cargando" algo
         SVProgressHUD.show()
         // hacemos un request de tipo DELETE a users.php
-        Alamofire.request("http://pt202.dreamhosters.com/api/controllers/users.php", method: .delete, parameters: parameters)
+        Alamofire.request("\(baseURL)/users.php", method: .delete, parameters: parameters)
             // validamos que nos haya respondido con un código de OK (2xx)
             .validate()
             // y cuando obtengamos un json de vuelta, entramos acá:

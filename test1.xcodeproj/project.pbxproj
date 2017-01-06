@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		368219BDA0011B1A5F6027DA /* Pods_test1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914B93F0BC9BC6B37FE8B7CA /* Pods_test1.framework */; };
+		732CA7C61E1F17E400C91B55 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732CA7C51E1F17E400C91B55 /* Globals.swift */; };
 		73524B971E148032002B1266 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73524B961E148032002B1266 /* AboutViewController.swift */; };
 		735685131D85AD11007A48A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735685121D85AD11007A48A6 /* AppDelegate.swift */; };
 		735685151D85AD11007A48A6 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735685141D85AD11007A48A6 /* ProjectsViewController.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		618087E089AA891D8B7346B7 /* Pods-test1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test1.release.xcconfig"; path = "Pods/Target Support Files/Pods-test1/Pods-test1.release.xcconfig"; sourceTree = "<group>"; };
+		732CA7C51E1F17E400C91B55 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		73524B961E148032002B1266 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		7356850F1D85AD10007A48A6 /* test1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		735685121D85AD11007A48A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			children = (
 				735685121D85AD11007A48A6 /* AppDelegate.swift */,
 				73524B961E148032002B1266 /* AboutViewController.swift */,
+				732CA7C51E1F17E400C91B55 /* Globals.swift */,
 				73DAC0F51E0CB3EF00EE07A2 /* LoginViewController.swift */,
 				735685261D85B559007A48A6 /* PhaseTableViewController.swift */,
 				735685141D85AD11007A48A6 /* ProjectsViewController.swift */,
@@ -239,6 +242,7 @@
 				735685151D85AD11007A48A6 /* ProjectsViewController.swift in Sources */,
 				73A3F2361E1330C1000110E7 /* NewUserTableViewController.swift in Sources */,
 				735685131D85AD11007A48A6 /* AppDelegate.swift in Sources */,
+				732CA7C61E1F17E400C91B55 /* Globals.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
