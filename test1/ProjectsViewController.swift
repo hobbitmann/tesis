@@ -14,8 +14,13 @@ import Alamofire
 
 // Este es el objeto que va a representar a los proyectos
 struct Project {
-    var name: String
     var id: String
+    var nombre: String
+    var fechaInicio: String
+    var fechaTermino: String
+    var area: String
+    var encargado: String
+    var rut: String
 }
 
 // Aquí le agregamos un constructor para que pueda crearse un proyecto a partir de un json con este formato:
@@ -23,16 +28,26 @@ struct Project {
 extension Project {
     init(json: Parameters) throws {
         guard
-            let name = json["Nombre"] as? String,
-            let id = json["IDProyectos"] as? String
+            let id = json["IDProyectos"] as? String,
+            let nombre = json["Nombre"] as? String,
+            let fechaInicio = json["FechaInicio"] as? String,
+            let fechaTermino = json["FechaTermino"] as? String,
+            let area = json["Area"] as? String,
+            let encargado = json["Encargado"] as? String,
+            let rut = json["usuarios_RUT"] as? String
             else {
                 // si no logró encontrar esos valores en el json, tira error
                 throw MappingError()
         }
         
         // si los encontró, llena sus propios valores y tenemos un objeto de proyecto listo
-        self.name = name
         self.id = id
+        self.nombre = nombre
+        self.fechaInicio = fechaInicio
+        self.fechaTermino = fechaTermino
+        self.area = area
+        self.encargado = encargado
+        self.rut = rut
     }
 }
 
@@ -42,7 +57,7 @@ class ProjectCell: UITableViewCell {
     var project: Project! {
         didSet {
             // cuando se cambia el valor de esa variable interna, se cambia el valor de los textos que va a mostrar en pantalla
-            textLabel!.text = project.name
+            textLabel!.text = project.nombre
             detailTextLabel!.text = project.id
         }
     }
@@ -143,40 +158,39 @@ class ProjectsViewController: UITableViewController {
         // si es que la transición se llama "newProject"
         if segue.identifier == "newProject" {
             // intentamos obtener la siguiente vista
-//            if let nc = segue.destination as? UINavigationController,
-//                let new = nc.viewControllers.first as? NewProjectTableViewController
-//            {
-//                // y le pasamos como parámetro la función para insertar proyectos
-//                // así la pantalla de crear nuevo proyecto puede insertarlo en esta pantalla
-//                new.callback = insertNewObject
-//            }
+            if let nc = segue.destination as? UINavigationController,
+                let new = nc.viewControllers.first as? NewProjectTableViewController
+            {
+                // y le pasamos como parámetro la función para insertar proyectos
+                // así la pantalla de crear nuevo proyecto puede insertarlo en esta pantalla
+                new.callback = insertNewObject
+            }
         }
         // si es que la transición se llama "editProject"
         if segue.identifier == "editProject" {
             // intentamos obtener la siguiente vista
-//            if let nc = segue.destination as? UINavigationController,
-//                let new = nc.viewControllers.first as? NewProjectTableViewController,
-//                let cell = sender as? ProjectCell
-//            {
-//                // y le pasamos como parámetro la función para editar proyectos
-//                // así la pantalla de crear nuevo proyecto puede editarlo en esta pantalla
-//                new.callback = updateProject
-//                
-//                // le cambiamos el título para que diga que
-//                new.title = "Editar Proyecto"
-//                
-//                // y también le pasamos una función para configurar cosas cuando la vista esté cargada
-//                new.onViewDidLoad = {
-//                    // y además rellenamos la pantalla con los datos que ya tenemos
-//                    new.name.text = cell.project.name
-//                    new.password.text = cell.project.password
-//                    new.id.text = cell.project.id
-//                    
-//                    // y desabilitamos el id para que no se pueda modificar (y lo ponemos gris pa que se entienda)
-//                    new.id.isEnabled = false
-//                    new.id.textColor = UIColor.gray
-//                }
-//            }
+            if let nc = segue.destination as? UINavigationController,
+                let new = nc.viewControllers.first as? NewProjectTableViewController,
+                let cell = sender as? ProjectCell
+            {
+                // y le pasamos como parámetro la función para editar proyectos
+                // así la pantalla de crear nuevo proyecto puede editarlo en esta pantalla
+                new.callback = updateProject
+                
+                // le cambiamos el título para que diga que
+                new.title = "Editar Proyecto"
+                
+                // y también le pasamos una función para configurar cosas cuando la vista esté cargada
+                new.onViewDidLoad = {
+                    // y además rellenamos la pantalla con los datos que ya tenemos
+                    new.nombre.text = cell.project.nombre
+                    new.fechaInicio.text = cell.project.fechaInicio
+                    new.fechaTermino.text = cell.project.fechaTermino
+                    new.area.text = cell.project.area
+                    new.encargado.text = cell.project.encargado
+                    new.rut.text = cell.project.rut
+                }
+            }
         }
     }
     
