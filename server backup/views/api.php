@@ -1,19 +1,15 @@
 <?php
-function fetchRows($result){
-    if ($result) {
-        $rows = $result->fetch_all(MYSQLI_ASSOC);
-        return $rows;
-    } else {
-        return null;
+function resultFromRows($rows){
+    if (is_null($rows)) {
+        return failure("No se pudo ejecutar la query");
     }
+
+    return success($rows);
 }
 
 function result($result){
-    if ($rows = fetchRows($result)) {
-        return success($rows);
-    } else {
-        return failure("No se pudo ejecutar la query");
-    }
+    $rows = fetchRows($result);
+    return resultFromRows($rows);
 }
 
 function success($data) {

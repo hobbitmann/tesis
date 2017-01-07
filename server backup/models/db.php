@@ -12,4 +12,15 @@ if ($db->connect_errno) {
     printf("Connect failed: %s\n", $mysqli->connect_error);
     exit();
 }
+
+$db->set_charset("utf8");
+
+function fetchRows($result){
+    if ($result) {
+        $rows = $result->fetch_all(MYSQLI_ASSOC);
+        return $rows;
+    } else {
+        return null;
+    }
+}
 ?>
