@@ -302,7 +302,7 @@ class TasksViewController: UITableViewController {
                 case .success(let data):
                     print(data)
                     // en caso de exito, mostramos un mensaje de éxito
-                    SVProgressHUD.showSuccess(withStatus: "Tarea borrado")
+                    SVProgressHUD.showSuccess(withStatus: "\(data.first!)")
                     
                     // y recargamos la tabla
                     self?.refreshControl?.beginRefreshing()
