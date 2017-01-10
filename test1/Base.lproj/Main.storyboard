@@ -64,7 +64,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Billund Online" id="ePa-iD-QE1">
                         <barButtonItem key="backBarButtonItem" title="login" id="MAh-zV-1XU"/>
-                        <barButtonItem key="rightBarButtonItem" title="login" style="done" id="v8h-91-a0N">
+                        <barButtonItem key="rightBarButtonItem" title="Login" style="done" id="v8h-91-a0N">
                             <connections>
                                 <action selector="didPressLogin:" destination="Top-B6-wsf" id="cyf-7v-PzF"/>
                             </connections>
@@ -549,19 +549,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0c-xL-cSx">
-                                <rect key="frame" x="185" y="344" width="44" height="30"/>
-                                <state key="normal" title="logout"/>
-                                <connections>
-                                    <action selector="didPressLogout:" destination="NHj-FY-B3u" eventType="touchUpInside" id="8MZ-jG-aO3"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="POz-4p-u1X">
-                                <rect key="frame" x="20" y="84" width="374" height="250"/>
+                                <rect key="frame" x="20" y="84" width="374" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="em9-v2-o4Q"/>
-                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">Esta aplicación es una extensión del sistema de gestión de proyectos con el fin de facilitarle al usuario o cliente como gestionar los proyectos de una forma más sencilla y ordenada.
@@ -579,14 +569,19 @@ Más información en https://icons8.com/</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="S0c-xL-cSx" firstAttribute="top" secondItem="POz-4p-u1X" secondAttribute="bottom" constant="10" id="9aV-jE-QWF"/>
-                            <constraint firstItem="S0c-xL-cSx" firstAttribute="centerX" secondItem="y3V-MA-tJf" secondAttribute="centerX" id="Jee-gG-Gpm"/>
                             <constraint firstItem="POz-4p-u1X" firstAttribute="top" secondItem="kzQ-UY-97V" secondAttribute="bottom" constant="20" id="JuQ-6D-gSN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="POz-4p-u1X" secondAttribute="trailing" id="M8L-EB-7BS"/>
                             <constraint firstItem="POz-4p-u1X" firstAttribute="leading" secondItem="y3V-MA-tJf" secondAttribute="leadingMargin" id="nfu-yQ-fV0"/>
+                            <constraint firstItem="V4i-1Z-Iyg" firstAttribute="top" secondItem="POz-4p-u1X" secondAttribute="bottom" constant="20" id="rRo-75-wPJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Acerca de Billund" id="Mts-8H-GAM"/>
+                    <navigationItem key="navigationItem" title="Acerca de Billund" id="Mts-8H-GAM">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" style="done" id="4OA-ZC-gPp">
+                            <connections>
+                                <action selector="didPressLogout:" destination="NHj-FY-B3u" id="Tfd-jN-y5O"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o5f-LA-wtK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
