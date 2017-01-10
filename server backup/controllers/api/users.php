@@ -26,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
     
-    //vista
     printJson(success([['mensaje'=>'funciono']]));
 } else if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     $id = $db->real_escape_string($_GET['id']);
@@ -42,12 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
     
-    //vista
     printJson(success([['mensaje'=>"usuario '$id' borrado"]]));
 } else {
     $rows = getUsers();
 
-    // vista
     printJson(resultFromRows($rows));
 }
 ?>

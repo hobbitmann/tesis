@@ -166,30 +166,40 @@ class ProjectsViewController: UITableViewController {
                 new.callback = insertNewObject
             }
         }
-        // si es que la transición se llama "editProject"
-        if segue.identifier == "editProject" {
+//        // si es que la transición se llama "editProject"
+//        if segue.identifier == "editProject" {
+//            // intentamos obtener la siguiente vista
+//            if let nc = segue.destination as? UINavigationController,
+//                let new = nc.viewControllers.first as? NewProjectTableViewController,
+//                let cell = sender as? ProjectCell
+//            {
+//                // y le pasamos como parámetro la función para editar proyectos
+//                // así la pantalla de crear nuevo proyecto puede editarlo en esta pantalla
+//                new.callback = updateProject
+//                
+//                // le cambiamos el título para que diga que
+//                new.title = "Editar Proyecto"
+//                
+//                // y también le pasamos una función para configurar cosas cuando la vista esté cargada
+//                new.onViewDidLoad = {
+//                    // y además rellenamos la pantalla con los datos que ya tenemos
+//                    new.nombre.text = cell.project.nombre
+//                    new.fechaInicio.text = cell.project.fechaInicio
+//                    new.fechaTermino.text = cell.project.fechaTermino
+//                    new.area.text = cell.project.area
+//                    new.encargado.text = cell.project.encargado
+//                    new.rut.text = cell.project.rut
+//                }
+//            }
+//        }
+        // si es que la transición se llama "projectDetail"
+        if segue.identifier == "projectDetail" {
             // intentamos obtener la siguiente vista
-            if let nc = segue.destination as? UINavigationController,
-                let new = nc.viewControllers.first as? NewProjectTableViewController,
+            if let vc = segue.destination as? TasksViewController,
                 let cell = sender as? ProjectCell
             {
-                // y le pasamos como parámetro la función para editar proyectos
-                // así la pantalla de crear nuevo proyecto puede editarlo en esta pantalla
-                new.callback = updateProject
-                
-                // le cambiamos el título para que diga que
-                new.title = "Editar Proyecto"
-                
-                // y también le pasamos una función para configurar cosas cuando la vista esté cargada
-                new.onViewDidLoad = {
-                    // y además rellenamos la pantalla con los datos que ya tenemos
-                    new.nombre.text = cell.project.nombre
-                    new.fechaInicio.text = cell.project.fechaInicio
-                    new.fechaTermino.text = cell.project.fechaTermino
-                    new.area.text = cell.project.area
-                    new.encargado.text = cell.project.encargado
-                    new.rut.text = cell.project.rut
-                }
+                // y le pasamos como parámetro el proyecto del cual queremos ver detalles
+                vc.project = cell.project
             }
         }
     }
