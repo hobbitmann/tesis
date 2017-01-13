@@ -84,5 +84,33 @@ $tabla_de_proyectos = tableFromArrayOfAssocArrays($proyectos, $titulos_tabla);
                 <input type="submit" value="Crear"/>
             </fieldset>
         </form>
+        <form action='projects/update.php' method="post">
+            <fieldset style="display: inline-block;">
+                <legend>Editar Proyecto:</legend>
+                <table width="200" borderph="0">
+                    <tr>
+                        <td>ID</td>
+                        <td><input type="text" name="IDProyectos" placeholder="42"></td>
+                    </tr>
+                    <tr>
+                        <td>Nombre</td>
+                        <td><input type="text" name="Nombre" placeholder="Juan Perez"></td>
+                        <td>Fecha&nbspInicio</td>
+                        <td><input type="date" name="FechaInicio" placeholder="yyyy-mm-dd"></td>
+                        <td>Fecha&nbspTérmino</td>
+                        <td><input type="date" name="FechaTermino" placeholder="yyyy-mm-dd"></td>
+                    </tr>
+                    <tr>
+                        <td>Area</td>
+                        <td><input type="text" name="Area" placeholder="Villa Alemana"></td>
+                        <td>Encargado</td>
+                        <td><input type="text" name="Encargado" placeholder="Don Ramón Valdés"></td>
+                        <td>Rut</td>
+                        <td><input type="text" name="usuarios_RUT" placeholder="12.345.678-K"></td>
+                    </tr>
+                </table>
+                <input type="submit" value="Editar"/>
+            </fieldset>
+        </form>
     </body>
 </html>

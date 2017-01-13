@@ -62,6 +62,21 @@ function makeProject($Area, $Encargado, $FechaInicio, $FechaTermino, $Nombre, $u
     return $insert_id;
 }
 
+function updateProject($IDProyectos, $Area, $Encargado, $FechaInicio, $FechaTermino, $Nombre, $usuarios_RUT) {
+    global $db;
+    
+    $sql = "UPDATE Proyectos SET Area='$Area', Encargado='$Encargado', FechaInicio='$FechaInicio', FechaTermino='$FechaTermino', Nombre='$Nombre', usuarios_RUT='$usuarios_RUT' WHERE IDProyectos='$IDProyectos'";
+    $respuesta = $db->query($sql);
+    if(is_null($respuesta)) {
+        return "No se pudo editar el proyecto";
+    }
+    if ($db->affected_rows == 0) {
+        return "No se editó ningún proyecto";
+    }
+    
+    return null;
+}
+
 function deleteProject($id) {
     global $db;
     
