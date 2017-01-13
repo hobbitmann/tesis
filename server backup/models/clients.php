@@ -4,11 +4,27 @@ require_once __DIR__.'/db.php';
 function makeClient($rut, $clientName, $entry) {
     global $db;
     
+    $sql = "INSERT INTO Clientes (Rut, ClientName, Entry) VALUES('$rut', '$clientName', '$entry')";
+    $respuesta = $db->query($sql);
+    
+    if (is_null($respuesta)) {
+        return "No se pudo agregar el cliente";
+    }
+    if ($db->affected_rows < 1) {
+        return "El cliente con Rut:'$rut' ya existe";
+    }
+    
+    return null;
+}
+
+function updateClient($rut, $clientName, $entry) {
+    global $db;
+    
     $sql = "INSERT INTO Clientes (Rut, ClientName, Entry) VALUES('$rut', '$clientName', '$entry') ON DUPLICATE KEY UPDATE Rut='$rut', ClientName='$clientName', Entry='$entry'";
     $respuesta = $db->query($sql);
     
-    if(is_null($respuesta)) {
-        return "No se pudo agregar el cliente";
+    if (is_null($respuesta)) {
+        return "No se pudo editar el cliente";
     }
     
     return null;
