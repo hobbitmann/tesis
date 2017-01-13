@@ -4,10 +4,22 @@ require_once __DIR__.'/db.php';
 function makeUser($username, $password) {
     global $db;
     
-    $sql = "INSERT INTO login (username, password) VALUES('$username', '$password') ON DUPLICATE KEY UPDATE username='$username', password='$password'";
+    $sql = "INSERT INTO login (username, password) VALUES('$username', '$password')";
     $respuesta = $db->query($sql);
     if(is_null($respuesta)) {
         return "No se pudo agregar el usuario";
+    }
+    
+    return null;
+}
+
+function updateUser($id, $username, $password) {
+    global $db;
+    
+    $sql = "INSERT INTO login (id, username, password) VALUES('$id', '$username', '$password') ON DUPLICATE KEY UPDATE username='$username', password='$password'";
+    $respuesta = $db->query($sql);
+    if(is_null($respuesta)) {
+        return "No se pudo editar el usuario";
     }
     
     return null;

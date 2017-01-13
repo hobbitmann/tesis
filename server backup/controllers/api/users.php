@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
     
-    $error = makeUser($id, $username, $password);
+    $error = updateUser($id, $username, $password);
     if($error) {
         printJson(failure($error));
         exit();
