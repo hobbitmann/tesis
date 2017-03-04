@@ -92,10 +92,17 @@ function deleteProject($id) {
     return null;
 }
 
-function getProjects() {
+function getProjects($id_usuario) {
     global $db;
     
-    $sql = "SELECT * FROM Proyectos";
+    $sql = <<<SQL
+        SELECT   Proyectos.*
+        FROM     Proyectos 
+        JOIN     ProyectosUsuarios
+        ON       Proyectos.`IDProyectos` = ProyectosUsuarios.`Proyecto`
+        where    ProyectosUsuarios.`Usuario` = '$id_usuario'
+SQL;
+
     return fetchRows($db->query($sql));
 }
 ?> 

@@ -61,7 +61,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     printJson(success([['mensaje'=>"proyecto '$id' borrado"]]));
 } else {
-    $rows = getProjects();
+    $id_usuario = $db->real_escape_string($_GET['id_usuario']);
+    if (empty($id_usuario)) {
+        printJson(failure("falta enviar el id_usuario"));
+        exit();
+    }
+    $rows = getProjects($id_usuario);
 
     printJson(resultFromRows($rows));
 }

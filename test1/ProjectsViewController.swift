@@ -91,7 +91,7 @@ class ProjectsViewController: UITableViewController {
     // esta es la función que obtiene los datos de internet
     func loadData() {
         // hacemos un request de tipo GET a projects.php
-        Alamofire.request("\(apiUrl)/projects.php")
+        Alamofire.request("\(apiUrl)/projects.php", parameters: ["id_usuario": loggedInUser])
             // validamos que nos haya respondido con un código de OK (2xx)
             .validate()
             // y cuando obtengamos un json de vuelta, entramos acá:
