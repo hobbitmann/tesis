@@ -40,8 +40,12 @@ class LoginViewController: UIViewController {
                 }
                 switch serverResponse {
                 case .success(let data):
+                    let id = data.first!
                     // en caso de éxito, mostramos un mensaje de éxito dándole la bienvenida al usuario
-                    SVProgressHUD.showSuccess(withStatus: "Bienvenido usuario #\(data.first!)")
+                    SVProgressHUD.showSuccess(withStatus: "Bienvenido usuario #\(id)")
+                    // guardamos algo que represente al usuario logueado para las subsiguientes requests
+                    // usualmente aquí iría un token para la sesión, pero por esta vez con el id nos basta
+                    loggedInUser = id
                     // y hacemos una transición a la siguiente pantalla
                     self.performSegue(withIdentifier: "didLogin", sender: sender)
                 case .failure(let error):
