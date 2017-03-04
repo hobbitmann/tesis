@@ -5,7 +5,8 @@ siguiendo lo que dice la documentación.
 http://php.net/manual/en/mysqli.construct.php
 */
 
-$db = new mysqli('mysql.pt202.dreamhosters.com', 'pt202', 'wJ!*S*A6', 'pt202');
+// $db = new mysqli('mysql.pt202.dreamhosters.com', 'pt202', 'wJ!*S*A6', 'pt202');
+$db = new mysqli('127.0.0.1', '', '', 'test');
 
 /* check connection */
 if ($db->connect_errno) {
