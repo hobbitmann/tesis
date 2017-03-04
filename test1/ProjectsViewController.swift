@@ -91,7 +91,7 @@ class ProjectsViewController: UITableViewController {
     // esta es la función que obtiene los datos de internet
     func loadData() {
         // hacemos un request de tipo GET a projects.php
-        Alamofire.request("\(baseURL)/projects.php")
+        Alamofire.request("\(apiUrl)/projects.php")
             // validamos que nos haya respondido con un código de OK (2xx)
             .validate()
             // y cuando obtengamos un json de vuelta, entramos acá:
@@ -256,7 +256,7 @@ class ProjectsViewController: UITableViewController {
         // muestra un spinner para que se vea que está "cargando" algo
         SVProgressHUD.show()
         // hacemos un request de tipo DELETE a projects.php
-        Alamofire.request("\(baseURL)/projects.php", method: .delete, parameters: parameters)
+        Alamofire.request("\(apiUrl)/projects.php", method: .delete, parameters: parameters)
             // validamos que nos haya respondido con un código de OK (2xx)
             .validate()
             // y cuando obtengamos un json de vuelta, entramos acá:

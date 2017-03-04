@@ -134,7 +134,7 @@ class TasksViewController: UITableViewController {
             "id_proyecto": project.id
         ]
         // hacemos un request de tipo GET a tasks.php
-        Alamofire.request("\(baseURL)/tasks.php", parameters: parameters)
+        Alamofire.request("\(apiUrl)/tasks.php", parameters: parameters)
             // validamos que nos haya respondido con un código de OK (2xx)
             .validate()
             // y cuando obtengamos un json de vuelta, entramos acá:
@@ -289,7 +289,7 @@ class TasksViewController: UITableViewController {
         // muestra un spinner para que se vea que está "cargando" algo
         SVProgressHUD.show()
         // hacemos un request de tipo POST a tasks.php
-        Alamofire.request("\(baseURL)/tasks.php", method: .post, parameters: parameters)
+        Alamofire.request("\(apiUrl)/tasks.php", method: .post, parameters: parameters)
             // validamos que nos haya respondido con un código de OK (2xx)
             .validate()
             // y cuando obtengamos un json de vuelta, entramos acá:

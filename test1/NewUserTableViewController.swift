@@ -56,7 +56,7 @@ class NewUserTableViewController: UITableViewController {
         SVProgressHUD.show()
         
         // hacemos un request de tipo POST a users.php
-        Alamofire.request("\(baseURL)/users.php", method: .post, parameters: parameters)
+        Alamofire.request("\(apiUrl)/users.php", method: .post, parameters: parameters)
             // validamos que nos haya respondido con un código de OK (2xx)
             .validate()
             // y cuando obtengamos un json de vuelta, entramos acá:

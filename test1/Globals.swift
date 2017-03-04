@@ -6,4 +6,5 @@
 //  Copyright © 2017 gianni. All rights reserved.
 //
 
-let baseURL = "http://pt202.dreamhosters.com/final/controllers/api"
+let baseURL = "http://pt202.dreamhosters.com"
+let apiUrl = "\(baseURL)/final/controllers/api"
