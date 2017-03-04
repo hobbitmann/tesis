@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
         SVProgressHUD.show()
         
         // hacemos un request de tipo POST a login.php
-        Alamofire.request("\(baseURL)/api/controllers/login.php", method: .post, parameters: parameters)
+        Alamofire.request("\(apiUrl)/login.php", method: .post, parameters: parameters)
             // validamos que nos haya respondido con un código de OK (2xx)
             .validate()
             // y cuando obtengamos un json de vuelta, entramos acá:
