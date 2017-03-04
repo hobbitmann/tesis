@@ -11,7 +11,7 @@ if (isset($_POST['NOMBRE'])) {
     if(is_string($error)) {
         $showLoginErrorMessage = true;
     } else {
-        echo "<script> location.href='http://pt202.dreamhosters.com/final/controllers/web/home.php'; </script>";
+        echo "<script> location.href='home.php'; </script>";
     }
 }
 ?>
