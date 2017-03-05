@@ -58,7 +58,8 @@ class NewProjectTableViewController: UITableViewController {
             "FechaTermino": p_fechaTermino,
             "Area": p_area,
             "Encargado": p_encargado,
-            "usuarios_RUT": p_rut
+            "usuarios_RUT": p_rut,
+            "id_usuario": loggedInUser
         ]
         
         // muestra un spinner para que se vea que está "cargando" algo

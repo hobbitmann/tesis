@@ -3,7 +3,7 @@ require_once __DIR__.'/db.php';
 require_once __DIR__.'/phases.php';
 require_once __DIR__.'/tasks.php';
 
-function makeProject($Area, $Encargado, $FechaInicio, $FechaTermino, $Nombre, $usuarios_RUT) {
+function makeProject($Area, $Encargado, $FechaInicio, $FechaTermino, $Nombre, $usuarios_RUT, $id_usuario) {
     global $db;
     
     $sql = "INSERT INTO Proyectos (Area, Encargado, FechaInicio, FechaTermino, Nombre, usuarios_RUT) VALUES('$Area', '$Encargado', '$FechaInicio', '$FechaTermino', '$Nombre', '$usuarios_RUT')";
@@ -16,6 +16,21 @@ function makeProject($Area, $Encargado, $FechaInicio, $FechaTermino, $Nombre, $u
     if(empty($insert_id)) {
         return "no se pudo crear el proyecto $Nombre. mysql reportó el siguiente error: '$db->error'";
     }
+    
+    $id_proyecto = $insert_id;
+    
+    $permiso_creador = 1;
+    $sql = "INSERT INTO ProyectosUsuarios (Permisos, Proyecto, Usuario) VALUES ('$permiso_creador', '$id_proyecto', '$id_usuario')";
+    $respuesta = $db->query($sql);
+    if(empty($respuesta)) {
+        return "no se pudo ejecutar la query para agregar permisos del proyecto $Nombre al usuario #$id_usuario";
+    }
+    
+    $insert_id = $db->insert_id;
+    if(empty($insert_id)) {
+        return "no se pudo agregar permisos del proyecto $Nombre al usuario #$id_usuario. mysql reportó el siguiente error: '$db->error'";
+    }
+
     
     $fases_con_tareas = [
         "Venta" => [
@@ -43,7 +58,6 @@ function makeProject($Area, $Encargado, $FechaInicio, $FechaTermino, $Nombre, $u
         ],
     ];
     
-    $id_proyecto = $insert_id;
     foreach ($fases_con_tareas as $nombre_fase => $tareas) {
         $id_phase = makePhase($id_proyecto, $nombre_fase);
         if (is_string($id_phase)) {
