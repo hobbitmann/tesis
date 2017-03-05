@@ -59,6 +59,41 @@ class ProjectCell: UITableViewCell {
             // cuando se cambia el valor de esa variable interna, se cambia el valor de los textos que va a mostrar en pantalla
             textLabel!.text = project.nombre
             detailTextLabel!.text = project.id
+            imageView!.image = statusImage(project: project)
+        }
+    }
+    
+    private func statusImage(project: Project) -> UIImage {
+        let isFinished = project.area == "isFinished = todas las tareas están completas"
+        if isFinished {
+            return #imageLiteral(resourceName: "done")
+        }
+        
+        let today = Date()
+        
+        var minusOneWeek = DateComponents()
+        minusOneWeek.day = -7
+        let lastWeekDate = Calendar.current.date(
+            byAdding: minusOneWeek,
+            to: today
+        )
+        
+        let endDateString = project.fechaTermino
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        let endDate = formatter.date(from: endDateString)
+        
+        guard let end = endDate, let lastWeek = lastWeekDate else {
+            return #imageLiteral(resourceName: "warning")
+        }
+        
+        if lastWeek < end {
+            return #imageLiteral(resourceName: "good")
+        } else if today <= end {
+            return #imageLiteral(resourceName: "warning")
+        } else {
+            return #imageLiteral(resourceName: "bad")
         }
     }
 }
