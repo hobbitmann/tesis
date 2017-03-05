@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $insert_id = makeProject($Area, $Encargado, $FechaInicio, $FechaTermino, $Nombre, $usuarios_RUT);
     if(is_string($insert_id)) {
-        printJson(failure($error));
+        printJson(failure($insert_id));
         exit();
     }
     
