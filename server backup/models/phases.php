@@ -13,8 +13,8 @@ function makePhase($id_proyecto, $nombre) {
     
     $sql = "INSERT INTO phases (id_proyectos, nombre) VALUES('$id_proyecto', '$nombre')";
     $respuesta = $db->query($sql);
-    if(is_null($respuesta)) {
-        return "no se pudo ejecutar la query para crear la fase $nombre";
+    if(empty($respuesta)) {
+        return "no se pudo ejecutar la query para crear la fase '$nombre'. mysql reportó el siguiente error: '$db->error'";
     }
     
     $insert_id = $db->insert_id;

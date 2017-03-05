@@ -6,8 +6,8 @@ function makeUser($username, $password) {
     
     $sql = "INSERT INTO login (username, password) VALUES('$username', '$password')";
     $respuesta = $db->query($sql);
-    if(is_null($respuesta)) {
-        return "No se pudo agregar el usuario";
+    if(empty($respuesta)) {
+        return "No se pudo agregar el usuario. mysql reportó el siguiente error: '$db->error'";
     }
     
     return null;
@@ -18,8 +18,8 @@ function updateUser($id, $username, $password) {
     
     $sql = "INSERT INTO login (id, username, password) VALUES('$id', '$username', '$password') ON DUPLICATE KEY UPDATE username='$username', password='$password'";
     $respuesta = $db->query($sql);
-    if(is_null($respuesta)) {
-        return "No se pudo editar el usuario";
+    if(empty($respuesta)) {
+        return "No se pudo editar el usuario. mysql reportó el siguiente error: '$db->error'";
     }
     
     return null;
@@ -30,11 +30,11 @@ function deleteUser($id) {
     
     $sql = "DELETE FROM login WHERE id='$id'";
     $respuesta = $db->query($sql);
-    if (is_null($respuesta)) {
-        return "No se pudo ejecutar la query";
+    if (empty($respuesta)) {
+        return "No se pudo ejecutar la query. mysql reportó el siguiente error: '$db->error'";
     }
     if ($db->affected_rows == 0) {
-        return "No se borró ningún usuario";
+        return "No se borró ningún usuario. mysql reportó el siguiente error: '$db->error'";
     }
     
     return null;
@@ -55,7 +55,7 @@ function getUser($username, $password) {
     $rows = fetchRows($db->query($sql));
     
     if (empty($rows)) {
-        return "Nombre o password incorrecto";
+        return "Nombre o password incorrecto. mysql reportó el siguiente error: '$db->error'";
     }
     
     return $rows;

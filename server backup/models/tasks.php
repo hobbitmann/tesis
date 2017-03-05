@@ -13,8 +13,8 @@ function makeTask($id_phase, $name, $status) {
     
     $sql = "INSERT INTO task (id_phase, name, status) VALUES('$id_phase', '$name', '$status')";
     $respuesta = $db->query($sql);
-    if(is_null($respuesta)) {
-        return "no se pudo ejecutar la query para crear la tarea $name";
+    if(empty($respuesta)) {
+        return "no se pudo ejecutar la query para crear la tarea '$name'. mysql reportó el siguiente error: '$db->error'";
     }
     
     $insert_id = $db->insert_id;

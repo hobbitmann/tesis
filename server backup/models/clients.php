@@ -7,11 +7,11 @@ function makeClient($rut, $clientName, $entry) {
     $sql = "INSERT INTO Clientes (Rut, ClientName, Entry) VALUES('$rut', '$clientName', '$entry')";
     $respuesta = $db->query($sql);
     
-    if (is_null($respuesta)) {
-        return "No se pudo agregar el cliente";
+    if (empty($respuesta)) {
+        return "No se pudo agregar el cliente. mysql reportó el siguiente error: '$db->error'";
     }
     if ($db->affected_rows < 1) {
-        return "El cliente con Rut:'$rut' ya existe";
+        return "El cliente con Rut:'$rut' ya existe. mysql reportó el siguiente error: '$db->error'";
     }
     
     return null;
@@ -23,8 +23,8 @@ function updateClient($rut, $clientName, $entry) {
     $sql = "INSERT INTO Clientes (Rut, ClientName, Entry) VALUES('$rut', '$clientName', '$entry') ON DUPLICATE KEY UPDATE Rut='$rut', ClientName='$clientName', Entry='$entry'";
     $respuesta = $db->query($sql);
     
-    if (is_null($respuesta)) {
-        return "No se pudo editar el cliente";
+    if (empty($respuesta)) {
+        return "No se pudo editar el cliente. mysql reportó el siguiente error: '$db->error'";
     }
     
     return null;
@@ -35,11 +35,11 @@ function deleteClient($rut) {
     
     $sql = "DELETE FROM Clientes WHERE Rut='$rut'";
     $respuesta = $db->query($sql);
-    if (is_null($respuesta)) {
-        return "No se pudo ejecutar la query";
+    if (empty($respuesta)) {
+        return "No se pudo ejecutar la query. mysql reportó el siguiente error: '$db->error'";
     }
     if ($db->affected_rows == 0) {
-        return "No se borró ningún cliente";
+        return "No se borró ningún cliente. mysql reportó el siguiente error: '$db->error'";
     }
     
     return null;

@@ -8,8 +8,8 @@ function makeProject($Area, $Encargado, $FechaInicio, $FechaTermino, $Nombre, $u
     
     $sql = "INSERT INTO Proyectos (Area, Encargado, FechaInicio, FechaTermino, Nombre, usuarios_RUT) VALUES('$Area', '$Encargado', '$FechaInicio', '$FechaTermino', '$Nombre', '$usuarios_RUT')";
     $respuesta = $db->query($sql);
-    if(is_null($respuesta)) {
-        return "no se pudo ejecutar la query para crear el proyecto $Nombre";
+    if(empty($respuesta)) {
+        return "no se pudo ejecutar la query para crear el proyecto $Nombre. mysql reportó el siguiente error: '$db->error'";
     }
     
     $insert_id = $db->insert_id;
@@ -23,7 +23,7 @@ function makeProject($Area, $Encargado, $FechaInicio, $FechaTermino, $Nombre, $u
     $sql = "INSERT INTO ProyectosUsuarios (Permisos, Proyecto, Usuario) VALUES ('$permiso_creador', '$id_proyecto', '$id_usuario')";
     $respuesta = $db->query($sql);
     if(empty($respuesta)) {
-        return "no se pudo ejecutar la query para agregar permisos del proyecto $Nombre al usuario #$id_usuario";
+        return "no se pudo ejecutar la query para agregar permisos del proyecto $Nombre al usuario #$id_usuario. mysql reportó el siguiente error: '$db->error'";
     }
     
     $insert_id = $db->insert_id;
@@ -81,11 +81,11 @@ function updateProject($IDProyectos, $Area, $Encargado, $FechaInicio, $FechaTerm
     
     $sql = "UPDATE Proyectos SET Area='$Area', Encargado='$Encargado', FechaInicio='$FechaInicio', FechaTermino='$FechaTermino', Nombre='$Nombre', usuarios_RUT='$usuarios_RUT' WHERE IDProyectos='$IDProyectos'";
     $respuesta = $db->query($sql);
-    if(is_null($respuesta)) {
-        return "No se pudo editar el proyecto";
+    if(empty($respuesta)) {
+        return "No se pudo editar el proyecto. mysql reportó el siguiente error: '$db->error'";
     }
     if ($db->affected_rows == 0) {
-        return "No se editó ningún proyecto";
+        return "No se editó ningún proyecto. mysql reportó el siguiente error: '$db->error'";
     }
     
     return null;
@@ -96,11 +96,11 @@ function deleteProject($id) {
     
     $sql = "DELETE FROM Proyectos WHERE IDProyectos='$id'";
     $respuesta = $db->query($sql);
-    if (is_null($respuesta)) {
-        return "No se pudo ejecutar la query";
+    if (empty($respuesta)) {
+        return "No se pudo ejecutar la query. mysql reportó el siguiente error: '$db->error'";
     }
     if ($db->affected_rows == 0) {
-        return "No se borró ningún proyecto";
+        return "No se borró ningún proyecto. mysql reportó el siguiente error: '$db->error'";
     }
     
     return null;
