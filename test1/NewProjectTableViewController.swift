@@ -87,7 +87,8 @@ class NewProjectTableViewController: UITableViewController {
                         fechaTermino: p_fechaTermino,
                         area: p_area,
                         encargado: p_encargado,
-                        rut: p_rut
+                        rut: p_rut,
+                        done: "0"
                     )
                     self.callback(project)
                     // y descartamos la pantalla que ya cumplió su propósito

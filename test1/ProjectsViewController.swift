@@ -21,6 +21,7 @@ struct Project {
     var area: String
     var encargado: String
     var rut: String
+    var done: String
 }
 
 // Aquí le agregamos un constructor para que pueda crearse un proyecto a partir de un json con este formato:
@@ -34,7 +35,8 @@ extension Project {
             let fechaTermino = json["FechaTermino"] as? String,
             let area = json["Area"] as? String,
             let encargado = json["Encargado"] as? String,
-            let rut = json["usuarios_RUT"] as? String
+            let rut = json["usuarios_RUT"] as? String,
+            let done = json["done"] as? String
             else {
                 // si no logró encontrar esos valores en el json, tira error
                 throw MappingError()
@@ -48,6 +50,7 @@ extension Project {
         self.area = area
         self.encargado = encargado
         self.rut = rut
+        self.done = done
     }
 }
 
@@ -64,7 +67,7 @@ class ProjectCell: UITableViewCell {
     }
     
     private func statusImage(project: Project) -> UIImage {
-        let isFinished = project.area == "isFinished = todas las tareas están completas"
+        let isFinished = project.done == "1"
         if isFinished {
             return #imageLiteral(resourceName: "done")
         }

@@ -111,11 +111,17 @@ function getProjects($id_usuario) {
     global $db;
     
     $sql = <<<SQL
-        SELECT   Proyectos.*
-        FROM     Proyectos 
-        JOIN     ProyectosUsuarios
-        ON       Proyectos.`IDProyectos` = ProyectosUsuarios.`Proyecto`
-        where    ProyectosUsuarios.`Usuario` = '$id_usuario'
+        SELECT    Proyectos.*,
+                  COALESCE(MIN(task.`status`), 0) as done
+        FROM      Proyectos
+        LEFT JOIN phases
+        ON        Proyectos.`IDProyectos` = phases.`id_proyectos`
+        LEFT JOIN task 
+        ON        phases.id=task.id_phase
+        JOIN      ProyectosUsuarios
+        ON        Proyectos.`IDProyectos` = ProyectosUsuarios.`Proyecto`
+        WHERE     ProyectosUsuarios.`Usuario` = '$id_usuario'
+        GROUP BY  Proyectos.`IDProyectos`
 SQL;
 
     return fetchRows($db->query($sql));
