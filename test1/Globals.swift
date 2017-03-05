@@ -6,7 +6,7 @@
 //  Copyright © 2017 gianni. All rights reserved.
 //
 
-//let baseURL = "http://pt202.dreamhosters.com"
-private let baseURL = "http://127.0.0.1"
+private let baseURL = "http://pt202.dreamhosters.com"
+//private let baseURL = "http://127.0.0.1"
 let apiUrl = "\(baseURL)/final/controllers/api"
 var loggedInUser = ""
