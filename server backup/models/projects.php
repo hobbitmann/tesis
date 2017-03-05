@@ -67,7 +67,6 @@ function makeProject($Area, $Encargado, $FechaInicio, $FechaTermino, $Nombre, $u
         foreach ($tareas as $nombre_tarea) {
             $status = 0;
             $id_task = makeTask($id_phase, $nombre_tarea, $status);
-            var_dump($id_task);
             if (is_string($id_task)) {
                 return $id_task;
             }
