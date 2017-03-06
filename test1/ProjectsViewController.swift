@@ -22,6 +22,7 @@ struct Project {
     var encargado: String
     var rut: String
     var done: String
+    var progress: String
 }
 
 // Aquí le agregamos un constructor para que pueda crearse un proyecto a partir de un json con este formato:
@@ -51,6 +52,7 @@ extension Project {
         self.encargado = encargado
         self.rut = rut
         self.done = done
+        self.progress = (json["progress"] as? String) ?? ""
     }
 }
 
@@ -60,7 +62,7 @@ class ProjectCell: UITableViewCell {
     var project: Project! {
         didSet {
             // cuando se cambia el valor de esa variable interna, se cambia el valor de los textos que va a mostrar en pantalla
-            textLabel!.text = project.nombre
+            textLabel!.text = project.nombre+project.progress
             detailTextLabel!.text = project.id
             imageView!.image = statusImage(project: project)
         }

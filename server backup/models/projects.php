@@ -111,7 +111,7 @@ function getProjects($id_usuario) {
     
     $sql = <<<SQL
         SELECT    Proyectos.*,
-                  COALESCE(MIN(task.`status`), 0) as done
+                  COALESCE(MIN(task.`status`), 1) as done
         FROM      Proyectos
         LEFT JOIN phases
         ON        Proyectos.`IDProyectos` = phases.`id_proyectos`
@@ -143,7 +143,8 @@ function getReport($FechaInicio, $FechaTermino) {
     
     $sql = <<<SQL
         SELECT    Proyectos.*,
-                  COALESCE(MIN(task.`status`), 0) as done
+                  COALESCE(MIN(task.`status`), 1) as done,
+                  CONCAT(" (",COALESCE(SUM(task.`status`), 0),"/",COALESCE(COUNT(task.`status`), 0),")") as progress
         FROM      Proyectos
         LEFT JOIN phases
         ON        Proyectos.`IDProyectos` = phases.`id_proyectos`

@@ -21,6 +21,7 @@
 		735685291D85BAAC007A48A6 /* NewProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735685281D85BAAC007A48A6 /* NewProjectTableViewController.swift */; };
 		7387104E1E6CE89900A3D7BF /* NewPermissionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7387104C1E6CE89900A3D7BF /* NewPermissionTableViewController.swift */; };
 		7387104F1E6CE89900A3D7BF /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7387104D1E6CE89900A3D7BF /* PermissionsViewController.swift */; };
+		738710511E6D09A000A3D7BF /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738710501E6D09A000A3D7BF /* ReportViewController.swift */; };
 		73A3F2341E132FEE000110E7 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F2331E132FEE000110E7 /* UsersViewController.swift */; };
 		73A3F2361E1330C1000110E7 /* NewUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F2351E1330C1000110E7 /* NewUserTableViewController.swift */; };
 		73DAC0F61E0CB3EF00EE07A2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DAC0F51E0CB3EF00EE07A2 /* LoginViewController.swift */; };
@@ -43,6 +44,7 @@
 		735685281D85BAAC007A48A6 /* NewProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectTableViewController.swift; sourceTree = "<group>"; };
 		7387104C1E6CE89900A3D7BF /* NewPermissionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPermissionTableViewController.swift; sourceTree = "<group>"; };
 		7387104D1E6CE89900A3D7BF /* PermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
+		738710501E6D09A000A3D7BF /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		73A3F2331E132FEE000110E7 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		73A3F2351E1330C1000110E7 /* NewUserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserTableViewController.swift; sourceTree = "<group>"; };
 		73DAC0F51E0CB3EF00EE07A2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				73524B961E148032002B1266 /* AboutViewController.swift */,
 				732CA7C51E1F17E400C91B55 /* Globals.swift */,
 				73DAC0F51E0CB3EF00EE07A2 /* LoginViewController.swift */,
+				738710501E6D09A000A3D7BF /* ReportViewController.swift */,
 				735685141D85AD11007A48A6 /* ProjectsViewController.swift */,
 				732CA7CD1E24545400C91B55 /* TasksViewController.swift */,
 				73A3F2331E132FEE000110E7 /* UsersViewController.swift */,
@@ -252,6 +255,7 @@
 				7387104E1E6CE89900A3D7BF /* NewPermissionTableViewController.swift in Sources */,
 				73DAC0F61E0CB3EF00EE07A2 /* LoginViewController.swift in Sources */,
 				735685291D85BAAC007A48A6 /* NewProjectTableViewController.swift in Sources */,
+				738710511E6D09A000A3D7BF /* ReportViewController.swift in Sources */,
 				73524B971E148032002B1266 /* AboutViewController.swift in Sources */,
 				7387104F1E6CE89900A3D7BF /* PermissionsViewController.swift in Sources */,
 				73A3F2341E132FEE000110E7 /* UsersViewController.swift in Sources */,
