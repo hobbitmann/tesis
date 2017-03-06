@@ -240,6 +240,17 @@ class ProjectsViewController: UITableViewController {
                 vc.project = cell.project
             }
         }
+        
+        // si es que la transición se llama "showPermissions"
+        if segue.identifier == "showPermissions" {
+            // intentamos obtener la siguiente vista
+            if let vc = segue.destination as? PermissionsViewController,
+                let cell = sender as? ProjectCell
+            {
+                // y le pasamos como parámetro el proyecto del cual queremos ver detalles
+                vc.project = cell.project
+            }
+        }
     }
     
     // MARK: - Table View
@@ -324,5 +335,10 @@ class ProjectsViewController: UITableViewController {
                 }
         }
         
+    }
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let cell = self.tableView(tableView, cellForRowAt: indexPath)
+        performSegue(withIdentifier: "showPermissions", sender: cell)
     }
 }

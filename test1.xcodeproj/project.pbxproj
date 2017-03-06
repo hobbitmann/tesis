@@ -19,6 +19,8 @@
 		7356851C1D85AD11007A48A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7356851B1D85AD11007A48A6 /* Assets.xcassets */; };
 		7356851F1D85AD11007A48A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7356851D1D85AD11007A48A6 /* LaunchScreen.storyboard */; };
 		735685291D85BAAC007A48A6 /* NewProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735685281D85BAAC007A48A6 /* NewProjectTableViewController.swift */; };
+		7387104E1E6CE89900A3D7BF /* NewPermissionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7387104C1E6CE89900A3D7BF /* NewPermissionTableViewController.swift */; };
+		7387104F1E6CE89900A3D7BF /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7387104D1E6CE89900A3D7BF /* PermissionsViewController.swift */; };
 		73A3F2341E132FEE000110E7 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F2331E132FEE000110E7 /* UsersViewController.swift */; };
 		73A3F2361E1330C1000110E7 /* NewUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A3F2351E1330C1000110E7 /* NewUserTableViewController.swift */; };
 		73DAC0F61E0CB3EF00EE07A2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DAC0F51E0CB3EF00EE07A2 /* LoginViewController.swift */; };
@@ -39,6 +41,8 @@
 		7356851E1D85AD11007A48A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		735685201D85AD11007A48A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		735685281D85BAAC007A48A6 /* NewProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectTableViewController.swift; sourceTree = "<group>"; };
+		7387104C1E6CE89900A3D7BF /* NewPermissionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPermissionTableViewController.swift; sourceTree = "<group>"; };
+		7387104D1E6CE89900A3D7BF /* PermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
 		73A3F2331E132FEE000110E7 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		73A3F2351E1330C1000110E7 /* NewUserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserTableViewController.swift; sourceTree = "<group>"; };
 		73DAC0F51E0CB3EF00EE07A2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 				735685201D85AD11007A48A6 /* Info.plist */,
 				732CA7C71E21430800C91B55 /* ClientsViewController.swift */,
 				732CA7C81E21430800C91B55 /* NewClientTableViewController.swift */,
+				7387104C1E6CE89900A3D7BF /* NewPermissionTableViewController.swift */,
+				7387104D1E6CE89900A3D7BF /* PermissionsViewController.swift */,
 			);
 			path = test1;
 			sourceTree = "<group>";
@@ -243,9 +249,11 @@
 				732CA7C91E21430800C91B55 /* ClientsViewController.swift in Sources */,
 				732CA7CA1E21430800C91B55 /* NewClientTableViewController.swift in Sources */,
 				732CA7CE1E24545400C91B55 /* TasksViewController.swift in Sources */,
+				7387104E1E6CE89900A3D7BF /* NewPermissionTableViewController.swift in Sources */,
 				73DAC0F61E0CB3EF00EE07A2 /* LoginViewController.swift in Sources */,
 				735685291D85BAAC007A48A6 /* NewProjectTableViewController.swift in Sources */,
 				73524B971E148032002B1266 /* AboutViewController.swift in Sources */,
+				7387104F1E6CE89900A3D7BF /* PermissionsViewController.swift in Sources */,
 				73A3F2341E132FEE000110E7 /* UsersViewController.swift in Sources */,
 				735685151D85AD11007A48A6 /* ProjectsViewController.swift in Sources */,
 				73A3F2361E1330C1000110E7 /* NewUserTableViewController.swift in Sources */,
