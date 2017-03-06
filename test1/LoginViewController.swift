@@ -60,6 +60,11 @@ class LoginViewController: UIViewController {
                 }
         }
     }
+    
+    @IBAction func didPressEnterOnPassword(_ sender: Any) {
+        didPressLogin(sender)
+    }
+    
 }
 
 // Este es un objeto sentinela que representa un error en la función de mapeo
