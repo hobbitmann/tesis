@@ -29,14 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //vista
     printJson(success([['mensaje'=>'funciono']]));
 } else if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-    $Permisos = $db->real_escape_string($_GET['Permisos']);
+    $id = $db->real_escape_string($_GET['id']);
     
-    if (empty($Permisos)) {
-        printJson(failure("falta enviar el Permisos"));
+    if (empty($id)) {
+        printJson(failure("falta enviar el id"));
         exit();
     }
     
-    $error = deletePermission($Permisos);
+    $error = deletePermission($id);
     if($error) {
         printJson(failure($error));
         exit();
