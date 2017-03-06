@@ -125,4 +125,35 @@ SQL;
 
     return fetchRows($db->query($sql));
 }
+
+function getReport($FechaInicio, $FechaTermino) {
+    global $db;
+
+    if (empty($FechaInicio)) {
+        $sqlFechaInicio = '';
+    } else {
+        $sqlFechaInicio = "AND `FechaInicio` > '$FechaInicio'";
+    }
+
+    if (empty($FechaTermino)) {
+        $sqlFechaTermino = '';
+    } else {
+        $sqlFechaTermino = "AND `FechaTermino` < '$FechaTermino'";
+    }
+    
+    $sql = <<<SQL
+        SELECT    Proyectos.*,
+                  COALESCE(MIN(task.`status`), 0) as done
+        FROM      Proyectos
+        LEFT JOIN phases
+        ON        Proyectos.`IDProyectos` = phases.`id_proyectos`
+        LEFT JOIN task 
+        ON        phases.id=task.id_phase
+        WHERE 1=1 $sqlFechaInicio $sqlFechaTermino
+        GROUP BY  Proyectos.`IDProyectos`
+SQL;
+
+    return fetchRows($db->query($sql));
+}
+
 ?> 
