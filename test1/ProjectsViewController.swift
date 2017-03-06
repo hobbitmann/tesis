@@ -103,6 +103,66 @@ class ProjectCell: UITableViewCell {
     }
 }
 
+// Esta es la clase que maneja la celda de proyecto, lo que sale en la lista
+class BigProjectCell: UITableViewCell {
+    @IBOutlet weak var status: UIImageView!
+    @IBOutlet weak var nombre: UILabel!
+    @IBOutlet weak var id: UILabel!
+    @IBOutlet weak var fechaInicio: UILabel!
+    @IBOutlet weak var fechaTermino: UILabel!
+    @IBOutlet weak var area: UILabel!
+    @IBOutlet weak var encargado: UILabel!
+    @IBOutlet weak var rut: UILabel!
+    // tiene una variable interna de tipo Project
+    var project: Project! {
+        didSet {
+            // cuando se cambia el valor de esa variable interna, se cambia el valor de los textos que va a mostrar en pantalla
+            status.image = statusImage(project: project)
+            nombre.text = project.nombre+project.progress
+            id.text = project.id
+            fechaInicio.text = project.fechaInicio
+            fechaTermino.text = project.fechaTermino
+            area.text = project.area
+            encargado.text = project.encargado
+            rut.text = project.rut
+        }
+    }
+    
+    private func statusImage(project: Project) -> UIImage {
+        let isFinished = project.done == "1"
+        if isFinished {
+            return #imageLiteral(resourceName: "done")
+        }
+        
+        let today = Date()
+        
+        var minusOneWeek = DateComponents()
+        minusOneWeek.day = -7
+        let lastWeekDate = Calendar.current.date(
+            byAdding: minusOneWeek,
+            to: today
+        )
+        
+        let endDateString = project.fechaTermino
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        let endDate = formatter.date(from: endDateString)
+        
+        guard let end = endDate, let lastWeek = lastWeekDate else {
+            return #imageLiteral(resourceName: "warning")
+        }
+        
+        if lastWeek < end {
+            return #imageLiteral(resourceName: "good")
+        } else if today <= end {
+            return #imageLiteral(resourceName: "warning")
+        } else {
+            return #imageLiteral(resourceName: "bad")
+        }
+    }
+}
+
 // Esta es la clase que maneja la pantalla que muestra los proyectos
 class ProjectsViewController: UITableViewController {
     // vamos a empezar con un arreglo de proyectos vacío
@@ -211,7 +271,7 @@ class ProjectsViewController: UITableViewController {
 //            // intentamos obtener la siguiente vista
 //            if let nc = segue.destination as? UINavigationController,
 //                let new = nc.viewControllers.first as? NewProjectTableViewController,
-//                let cell = sender as? ProjectCell
+//                let cell = sender as? BigProjectCell
 //            {
 //                // y le pasamos como parámetro la función para editar proyectos
 //                // así la pantalla de crear nuevo proyecto puede editarlo en esta pantalla
@@ -236,7 +296,7 @@ class ProjectsViewController: UITableViewController {
         if segue.identifier == "projectDetail" {
             // intentamos obtener la siguiente vista
             if let vc = segue.destination as? TasksViewController,
-                let cell = sender as? ProjectCell
+                let cell = sender as? BigProjectCell
             {
                 // y le pasamos como parámetro el proyecto del cual queremos ver detalles
                 vc.project = cell.project
@@ -247,7 +307,7 @@ class ProjectsViewController: UITableViewController {
         if segue.identifier == "showPermissions" {
             // intentamos obtener la siguiente vista
             if let vc = segue.destination as? PermissionsViewController,
-                let cell = sender as? ProjectCell
+                let cell = sender as? BigProjectCell
             {
                 // y le pasamos como parámetro el proyecto del cual queremos ver detalles
                 vc.project = cell.project
@@ -271,7 +331,7 @@ class ProjectsViewController: UITableViewController {
     // esta función tiene que ver con las tablas
     // esta le enseña como obtener una celda para dibujar y pasarle el proyecto correcto
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ProjectCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? BigProjectCell else {
             fatalError("ups")
         }
         
